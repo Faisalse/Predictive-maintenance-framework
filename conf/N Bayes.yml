@@ -1,0 +1,28 @@
+type: opt # single|window, maybe add opt
+key: NB #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy.Acc
+- class: accuracy.Precision
+- class: accuracy.Recall
+- class: accuracy.F1_score 
+- class: accuracy.Roc_Auc_score
+- class: accuracy.Precision_Recall_score
+
+optimize:
+    class: accuracy.Precision_Recall_score
+    iterations: 10
+algorithms:
+- class: NB.nb.NB
+  params: {}
+  params_opt:
+    var_smoothing: [1e-11, 1e-10, 1e-9]
+  key: NB

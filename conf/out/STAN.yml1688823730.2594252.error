@@ -1,0 +1,38 @@
+type: single # single|window, maybe add opt
+key: DT #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy_multiple.MAP
+  length: [3,5,10,15,20]
+- class: accuracy.MRR
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.NDCG
+  length: [3,5,10,15,20]
+- class: accuracy.HitRate
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.Precision
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.Recall
+  length: [3,5,10,15,20]
+- class: accuracy.CatD
+  length: [3,5,10,15,20]
+- class: coverage.Coverage
+  length: [20]
+- class: popularity.Popularity
+  length: [20]
+- class: saver.Saver
+  length: [50]
+- class: time_memory_usage.Time_usage_training
+- class: time_memory_usage.Time_usage_testing
+algorithms:
+- class: knn.stan.STAN
+  params: { k: 5000 , sample_size: 4500, lambda_spw: 0.11 , lambda_snh: 25, lambda_inh: 1.5 }
+  key: stan

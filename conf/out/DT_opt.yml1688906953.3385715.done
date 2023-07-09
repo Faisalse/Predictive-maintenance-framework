@@ -1,0 +1,31 @@
+type: opt # single|window, maybe add opt
+key: DT #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy.Acc
+- class: accuracy.Precision
+- class: accuracy.Recall
+- class: accuracy.F1_score 
+- class: accuracy.Roc_Auc_score
+
+optimize:
+    class: accuracy.F1_score
+    iterations: 10
+
+algorithms:
+- class: DTree.DTree.DTree
+  params: {}
+  params_opt:
+    criterion: ["gini", "entropy"]
+    max_depth: [5, 10, 15, 20, 30, 50, ]
+    splitter: ["random", "best"]
+  key: DTree
+

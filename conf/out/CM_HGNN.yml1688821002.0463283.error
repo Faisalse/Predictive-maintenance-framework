@@ -1,0 +1,30 @@
+type: single # single|window, maybe add opt
+key: baselines_and_models_and_hybrids #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: retailrocket #added in the end of the csv names
+  folder: data/retailrocket/prepare/fulltrain/
+  prefix: retailrocket
+  opts: {sessions_test: 100}
+results:
+  folder: results/model3d/dec/
+metrics:
+- class: accuracy.HitRate
+  length: [3,5,10,15,20]
+- class: accuracy.MRR
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.NDCG
+  length: [3,5,10,15,20]
+- class: coverage.Coverage
+  length: [20]
+- class: popularity.Popularity
+  length: [20]
+- class: saver.Saver
+  length: [50]
+- class: time_memory_usage.Time_usage_training
+- class: time_memory_usage.Time_usage_testing
+algorithms:
+- class: CM_HGCN.CM_HGCN.CM_HGCN
+  params: {epoch: 1, lr: 0.001, batch_size: 30, l2: 0.00001}
+  key: CM_HGCN
+

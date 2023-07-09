@@ -1,0 +1,4 @@
+Metrics;Precision_Recall_score:  ;Accuracy:  ;Precision:  ;Recall:  ;F1-score:  ;Roc_Auc_score:  ;Precision_Recall_score:  ;Training time ;
+SVM-var_smoothing=1e-9;0.288;0.9538;0.2917;0.2593;0.2745;0.6186;0.288;0.0063;
+SVM-var_smoothing=1e-10;0.288;0.9538;0.2917;0.2593;0.2745;0.6186;0.288;0.0076;
+SVM-var_smoothing=1e-11;0.288;0.9538;0.2917;0.2593;0.2745;0.6186;0.288;0.0064;
