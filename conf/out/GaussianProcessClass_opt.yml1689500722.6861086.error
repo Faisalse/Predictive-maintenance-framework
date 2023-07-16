@@ -1,0 +1,31 @@
+type: opt # single|window, maybe add opt
+key: GaussianProcessClass #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy.Acc
+- class: accuracy.Precision
+- class: accuracy.Recall
+- class: accuracy.F1_score 
+- class: accuracy.Roc_Auc_score
+- class: accuracy.Precision_Recall_score
+
+optimize:
+    class: accuracy.F1_score
+    iterations: 100
+
+algorithms:
+- class: GaussianProcessClass.GaussianProcessClass.GaussianProcessClass
+  params: {}
+  params_opt:
+    kernel__k1__constant_value: [0.001, 0.01, 1]
+    kernel__k2__length_scale: [0.001, 0.01, 1, 10, 20]
+  key: GaussianProcessClass
+

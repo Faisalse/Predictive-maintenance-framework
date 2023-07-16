@@ -1,0 +1,33 @@
+type: opt # single|window, maybe add opt
+key: CatB #added to the csv names
+evaluation: evaluation #evaluation|evaluation_last|evaluation_multiple|evaluation_user_based|evaluation_user_based_multiple
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy.Acc
+- class: accuracy.Precision
+- class: accuracy.Recall
+- class: accuracy.F1_score 
+- class: accuracy.Roc_Auc_score
+- class: accuracy.Precision_Recall_score
+
+optimize:
+    class: accuracy.F1_score
+    iterations: 100
+
+algorithms:
+- class: CatB.CatB.CatB
+  params: {}
+  params_opt:
+    iterations: [100, 200, 300]
+    learning_rate: [0.01, 0.05, 0.1]
+    depth: [4, 6, 8]
+    l2_leaf_reg: [1, 3, 5]
+  key: CatB
+

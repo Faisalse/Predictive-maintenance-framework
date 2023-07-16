@@ -18,7 +18,7 @@ class NB:
         
     def predict(self, test):
         
-        y_predict = self.clf.predict_proba(test)
+        y_predict = self.clf.predict_proba(test.iloc[:,:-1])
         return np.round(y_predict[:, 1])
     def clear(self):
         self.var_smoothing = 0

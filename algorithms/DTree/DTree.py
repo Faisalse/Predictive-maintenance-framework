@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 
 class DTree:
-    def __init__(self, criterion = "gini", max_depth = 10, splitter = "random"):
+    def __init__(self, criterion = "gini", max_depth = 10, splitter = "random", max_features = "sqrt"):
         self.max_depth = max_depth
         self.criterion = criterion
         self.splitter = splitter
@@ -21,7 +21,7 @@ class DTree:
         
     def predict(self, test):
         
-        y_predict = self.clf.predict_proba(test)
+        y_predict = self.clf.predict_proba(test.iloc[:,:-1])
         return np.round(y_predict[:, 1])
     def clear(self):
         self.max_depth = 0

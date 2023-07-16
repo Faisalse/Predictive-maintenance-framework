@@ -9,7 +9,9 @@ from sklearn import svm
 import numpy as np
 
 class SVM:
-    def __init__(self, kernel= 'linear'):
+    def __init__(self, C = 0.1, gamma = 1, kernel= 'linear'):
+        self.C = C,
+        self.gamma = gamma
         self.kernel = kernel
         
         
@@ -19,8 +21,10 @@ class SVM:
         self.clf = clf
         
     def predict(self, test):
-        y_predict = self.clf.predict_proba(test)
+        y_predict = self.clf.predict_proba(test.iloc[:,:-1])
         return np.round(y_predict[:, 1])
     def clear(self):
+        self.C = 0
+        self.gamma =1
         self.kernel = 0
         

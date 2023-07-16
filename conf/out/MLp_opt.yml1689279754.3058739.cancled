@@ -1,0 +1,32 @@
+type: opt # single|window, maybe add opt
+key: SVM #added to the csv names
+evaluation: evaluation
+
+data:
+  name: AI4I #added in the end of the csv names
+  folder: data/AI4I/fulltrain/
+  prefix: AI4I
+  
+results:
+  folder: results/
+
+metrics:
+- class: accuracy.Acc
+- class: accuracy.Precision
+- class: accuracy.Recall
+- class: accuracy.F1_score 
+- class: accuracy.Roc_Auc_score
+- class: accuracy.Precision_Recall_score
+
+optimize:
+    class: accuracy.F1_score
+algorithms:
+- class: MLP.MLP.MLP
+  params: {} 
+  params_opt:
+    epoch: [10, 15, 20, 25, 30]
+    lr: [1, 0.1, 0.01, 0.001, 0.0001]
+    batch_size: [60, 70, 80, 90, 100]
+  key: MLP
+
+

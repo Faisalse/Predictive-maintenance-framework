@@ -4,7 +4,7 @@ import pandas as pd
 
 def evaluate_sessions(pr, key, metrics, test_data, training_time): 
     st = time.time();
-    y_predict = pr.predict(test_data.iloc[:,:-1])
+    y_predict = pr.predict(test_data)
     y_actual = test_data.iloc[:,-1]
     
     
